@@ -142,14 +142,13 @@ Le code source est monté en volume, les changements sont appliqués instantané
 
 ```bash
 # Build l'image de prod (build uniquement)
-docker build -f Dockerfile -t tracy:build .
+docker build -t tracy-build .
 
 # Le conteneur exécute le build et s'arrête
-docker run tracy:build
+docker run --rm -v $(pwd)/.next:/app/.next tracy-build
 
 # Les fichiers buildés sont disponibles dans le host:
 # - .next/
-# - public/
 ```
 
 Ensuite, servir les fichiers buildés avec:
