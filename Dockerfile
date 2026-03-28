@@ -7,4 +7,7 @@ RUN npm install
 
 COPY . .
 
-CMD ["npm", "run", "build"]
+RUN npm run build    # ← build pendant la construction de l'image
+
+EXPOSE 3001
+CMD ["npm", "start"] # ← démarre le serveur

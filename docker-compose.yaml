@@ -4,10 +4,9 @@ services:
     container_name: tracy_next
     build:
       context: .
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
       no_cache: true
+      pull: true
+    restart: unless-stopped
     ports:
       - "3001:3001"
-    volumes:
-      - ./:/app
-      - /app/node_modules
