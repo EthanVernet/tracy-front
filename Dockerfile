@@ -10,4 +10,4 @@ COPY . .
 RUN npm run build
 
 EXPOSE 3001
-CMD ["npm", "start"]
+CMD npx next start --port 3001
