@@ -16,6 +16,7 @@ export default function Hero() {
   const titleY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
   const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "12%"]);
 
+  // @ts-ignore
   return (
     <section
       ref={ref}
@@ -155,7 +156,7 @@ export default function Hero() {
             <div className="mt-3 grid grid-cols-2 gap-2">
               {[
                 { k: "Runtime", v: "Isolated" },
-                { k: "Egress", v: "Blocked" },
+                { k: "Egress", v: "Controlled" },
                 { k: "Encrypt", v: "AES-256" },
                 { k: "Model", v: "Agnostic" },
               ].map(({ k, v }) => (

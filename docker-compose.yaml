@@ -3,15 +3,19 @@ services:
     container_name: tracy_next
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
       args:
         BUILD_ID: "1"
       no_cache: true
       pull: true
     image: tracy/next
     restart: unless-stopped
+    # Prod
+    # ports:
+    #  - "3001:80"
+    # Dev
     ports:
-      - "3001:80"
+      - "3001:3001"
     networks:
       - nginx-network
 
