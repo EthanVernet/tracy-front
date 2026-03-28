@@ -1,0 +1,13 @@
+services:
+  tracy-next:
+    image: tracy/next
+    container_name: tracy_next
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+      no_cache: true
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./:/app
+      - /app/node_modules

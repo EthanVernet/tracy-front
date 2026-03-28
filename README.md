@@ -125,7 +125,7 @@ npm run lint
 
 ```bash
 # Lancer avec compose
-docker compose -f compose.yml up -d
+docker compose -f docker-compose.yaml up -d
 
 # Build l'image de dev
 docker build -f Dockerfile.dev -t tracy:dev .
@@ -169,7 +169,7 @@ Si vous avez un `docker-compose.yml`:
 
 ```bash
 # Développement
-docker-compose -f docker-compose.yml up
+docker-compose -f docker-docker-compose.yaml up
 
 # Production
 docker-compose -f docker-compose.prod.yml up

@@ -48,7 +48,7 @@ export default function Hero() {
             >
               <div className="h-px w-12 bg-[#4e9ad0]" />
               <span className="font-mono text-[10px] uppercase tracking-[0.35em] text-[#4e9ad0]">
-                Framework · Open source · Self-hosted
+                Framework · Self-hosted · No rate limits
               </span>
             </motion.div>
 
