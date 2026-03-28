@@ -1,12 +1,20 @@
 services:
   tracy-next:
-    image: tracy/next
     container_name: tracy_next
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        BUILD_ID: "1"
       no_cache: true
       pull: true
+    image: tracy/next
     restart: unless-stopped
     ports:
       - "3001:3001"
+    networks:
+      - nginx-network
+
+networks:
+  nginx-network:
+    external: true
