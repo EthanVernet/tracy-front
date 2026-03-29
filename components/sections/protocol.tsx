@@ -49,34 +49,34 @@ docker logs tracy --follow`,
   --header 'Content-Type: multipart/form-data' \\
   --form 'collection=documents' \\
   --form 'model=nomic-embed-text' \\
-  --form 'file=@/chemin/vers/mon-fichier.pdf'`,
+  --form 'file=@/path/to/file.pdf'`,
     },
     {
       n: "05",
       title: "Spin up your agents",
       sub: "RAG and extractors, typed.",
       desc: "Create conversational and extractor agents in a few JSON lines, with RAG for chat and schema-based extraction for structured outputs.",
-      code: `# Agent conversationnel
+      code: `# Conversational agent
 curl http://localhost:9090/agent/agent \\
   --request POST \\
   --header 'Content-Type: application/json' \\
   --data '{
-  "name": "Assistant RH",
-  "role": "Tu es un assistant spécialisé en ressources humaines. Réponds uniquement à partir des documents fournis.",
+  "name": "HR Assistant",
+  "role": "<your system prompt>",
   "folder": "documents",
   "model": "llama3.2",
   "embedding_model": "nomic-embed-text"
 }'
 
-# Agent extracteur
+# Extractor agent
 curl http://localhost:9090/agent/extractor \\
   --request POST \\
   --header 'Content-Type: application/json' \\
   --data '{
-  "name": "Extracteur contrats",
-  "role": "Tu extrais les informations clés des contrats juridiques. Retourne uniquement le JSON demandé.",
+  "name": "Contract Extractor",
+  "role": "<your system prompt>",
   "model": "llama3.2",
-  "format": "{\\n  \\"status\\": {\\n    \\"type\\": \\"string\\",\\n    \\"enum\\": [\\"Intern\\", \\"Apprentice\\", \\"Employee\\", \\"Engineer\\", \\"Researcher\\", \\"Consultant\\", \\"Manager\\", \\"Director\\", \\"C-Level\\", \\"Founder\\"]\\n  },\\n  \\"name\\": {\\n    \\"type\\": \\"string\\"\\n  },\\n  \\"salary\\": {\\n    \\"type\\": \\"number\\"\\n  }\\n}"
+  "format": "{ /* JSON schema */ }"
 }'`,
     },
     {
@@ -90,7 +90,7 @@ curl http://localhost:9090/agent/extractor \\
   --data '{
   "agent_id": 1,
   "conversation_id": 1,
-  "prompt": "Quelles sont les congés prévus cette année ?",
+  "prompt": "What leave days are planned this year?",
   "limit": 5
 }'`,
     },
@@ -104,7 +104,7 @@ curl http://localhost:9090/agent/extractor \\
   --header 'Content-Type: application/json' \\
   --data '{
   "agent_id": 1,
-  "text": "Contrat signé le 01/01/2024 entre Dupont et Martin pour la somme de 5000€.",
+  "text": "Contract signed on 01/01/2024...",
   "nb": 3
 }'`,
     },
@@ -142,7 +142,7 @@ curl http://localhost:9090/agent/extractor \\
                   <div className="flex items-start">
                 <span
                     className="font-black text-[80px] leading-none tracking-tighter text-[#235789]/25 group-hover:text-[#235789]/50 transition-colors duration-500 select-none"
-                    style={{ fontFamily: "'Syne',sans-serif" }}
+                    style={{ fontFamily: "'Syne', sans-serif" }}
                 >
                   {s.n}
                 </span>
@@ -154,7 +154,7 @@ curl http://localhost:9090/agent/extractor \\
                 </span>
                     <h3
                         className="text-3xl font-black tracking-tight text-[#f2f2f2] leading-tight"
-                        style={{ fontFamily: "'Syne',sans-serif" }}
+                        style={{ fontFamily: "'Syne', sans-serif" }}
                     >
                       {s.title}
                     </h3>
