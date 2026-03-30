@@ -18,6 +18,9 @@ services:
     #  - "3001:3001"
     networks:
       - nginx-network
+    volumes:
+      - ./:/app
+      - /app/node_modules
 
 networks:
   nginx-network:
