@@ -3,7 +3,7 @@ services:
     container_name: tracy_next
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
       args:
         BUILD_ID: "1"
       no_cache: true
@@ -11,9 +11,9 @@ services:
     image: tracy/next
     restart: unless-stopped
     ports:
-     - "3001:80"
+      - "3001:3001"
     environment:
-      - API_URL=https://api.tracy-ai.com
+      - API_URL=http://localhost:8080
     networks:
       - nginx-network
 

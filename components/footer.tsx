@@ -6,7 +6,7 @@ export default function Footer() {
       label: "LinkedIn",
       href: "https://www.linkedin.com/company/tracy-ai-app/?viewAsMember=true",
     },
-    { label: "Privacy", href: "/privacy" },
+    { label: "Privacy", href: "https://app.tracy-ai.com/#/policyConfidentiality" },
   ];
 
   return (

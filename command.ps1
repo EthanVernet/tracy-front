@@ -1,5 +1,5 @@
 # Build & Deploy
-docker compose down
-docker compose build --no-cache tracy-next
-docker compose up -d
+docker compose -f docker-compose.dev.yaml down
+docker compose -f docker-compose.dev.yaml build --no-cache tracy-next
+docker compose -f docker-compose.dev.yaml up -d
 docker logs tracy_next --follow

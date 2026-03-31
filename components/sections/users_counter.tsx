@@ -2,11 +2,14 @@
 
 import { motion } from "framer-motion";
 
-const REAL_USERS = 45;
 const MAX_EARLY_ACCESS_USERS = 100;
 
-export default function EarlyAccessSection() {
-    const placesLeft = Math.max(MAX_EARLY_ACCESS_USERS - REAL_USERS, 0);
+interface Props {
+    userCount: number;
+}
+
+export default function EarlyAccessSection({ userCount }: Props) {
+    const placesLeft = Math.max(MAX_EARLY_ACCESS_USERS - userCount, 0);
 
     return (
         <section
@@ -58,7 +61,7 @@ export default function EarlyAccessSection() {
                         transition={{ duration: 0.6, delay: 0.35 }}
                         className="mt-8 max-w-3xl font-mono text-[10px] uppercase tracking-widest text-[#f2f2f2]/20"
                     >
-                        {REAL_USERS} active early users · {placesLeft} places left · 50% off
+                        {userCount} active early users · {placesLeft} places left · 50% off
                         before public release
                     </motion.p>
                 </motion.div>
