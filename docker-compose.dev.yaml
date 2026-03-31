@@ -13,7 +13,7 @@ services:
     ports:
       - "3001:3001"
     environment:
-      - API_URL=http://localhost:8080
+      - API_URL=http://host.docker.internal:8080  # était localhost:8080
     networks:
       - nginx-network
 

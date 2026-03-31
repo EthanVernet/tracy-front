@@ -11,17 +11,14 @@ import Security from "@/components/sections/security";
 import Pricing from "@/components/sections/princing";
 import EarlyAccessSection from "@/components/sections/users_counter";
 
+export const revalidate = 60;
+
 async function getUserCount(): Promise<number> {
-  try {
-    const res = await fetch(`${process.env.API_URL}/accounts/count`, {
-      next: { revalidate: 60 },
-    });
-    if (!res.ok) return 0;
-    const data = await res.json();
-    return data.count ?? 0;
-  } catch {
-    return 0;
-  }
+  const res = await fetch(`${process.env.API_URL}/accounts/count`);
+  if (!res.ok) throw new Error(`Failed to fetch user count: ${res.status}`);
+  const data = await res.json();
+  if (typeof data.count !== 'number') throw new Error('Invalid response: missing count');
+  return data.count;
 }
 
 export default async function TracyPage() {
