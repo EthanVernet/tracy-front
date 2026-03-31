@@ -6,6 +6,7 @@ services:
       dockerfile: Dockerfile
       args:
         BUILD_ID: "1"
+        API_URL: https://api.tracy-ai.com
       no_cache: true
       pull: true
     image: tracy/next
